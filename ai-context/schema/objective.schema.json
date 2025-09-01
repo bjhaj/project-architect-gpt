@@ -1,0 +1,39 @@
+{
+  "title": "Objective",
+  "type": "object",
+  "required": ["id","name","owner","inputs","outputs","acceptance_criteria","files"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier (e.g., O1.2 for Objective 2 in Milestone 1)."
+    },
+    "name": {
+      "type": "string",
+      "description": "Short descriptive title for the objective."
+    },
+    "owner": {
+      "type": "string",
+      "description": "Person responsible (can be 'self')."
+    },
+    "inputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Dependencies or files this objective relies on."
+    },
+    "outputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Artifacts produced (docs, configs, code stubs)."
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Definition of done for this objective."
+    },
+    "files": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "File paths where artifacts should be saved."
+    }
+  }
+}

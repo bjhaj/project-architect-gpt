@@ -1,0 +1,30 @@
+{
+  "objective_id": "{{O_ID}}",
+  "context_files": [
+    "ai-context/00_project_report.md",
+    "ai-context/milestones.md",
+    "ai-context/milestone_{{MILESTONE_INDEX}}/objective_{{O_ID}}.md"
+  ],
+  "instructions": "Think deeply. Read the context files listed above. Extract constraints, success criteria, and scope from the objective and report. Produce exactly the specified deliverables, placing them at the file targets. Do not expand scope. If required information is missing, add an 'ASSUMPTIONS' section at the top of the artifact with explicit defaults and proceed. End with an 'OPEN QUESTIONS' section listing any unresolved items.",
+  "constraints": [
+    "Respect the objective’s scope: one objective = one primary artifact (+ optional supporting).",
+    "Write outputs to the exact paths listed in `file_targets`.",
+    "Prefer clarity over cleverness; keep dependencies minimal.",
+    "Follow repository conventions (naming, structure, schemas/templates).",
+    "Do not introduce new libraries, services, or APIs unless explicitly listed in the objective.",
+    "If assumptions are made, document them clearly in an 'ASSUMPTIONS' section and continue."
+  ],
+  "deliverables": [
+    "{{PRIMARY_ARTIFACT_DESCRIPTION}}",
+    "{{OPTIONAL_SUPPORTING_ARTIFACT_DESCRIPTION}}"
+  ],
+  "acceptance_criteria": [
+    "{{AC1 — objective, verifiable}}",
+    "{{AC2}}",
+    "{{AC3}}"
+  ],
+  "file_targets": [
+    "{{REPO/PATH/PRIMARY_ARTIFACT}}",
+    "{{REPO/PATH/SUPPORTING_ARTIFACT}}"
+  ]
+}

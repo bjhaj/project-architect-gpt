@@ -1,0 +1,33 @@
+{
+  "title": "Milestone",
+  "type": "object",
+  "required": ["id", "name", "goal", "deliverable", "dependencies", "objectives_hint"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the milestone (e.g., M1)."
+    },
+    "name": {
+      "type": "string",
+      "description": "Short descriptive title for the milestone."
+    },
+    "goal": {
+      "type": "string",
+      "description": "What this milestone achieves conceptually."
+    },
+    "deliverable": {
+      "type": "string",
+      "description": "The tangible artifact or repo state produced by this milestone."
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Which earlier milestones must be complete before this one."
+    },
+    "objectives_hint": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Optional preview of objectives (plain text list)."
+    }
+  }
+}

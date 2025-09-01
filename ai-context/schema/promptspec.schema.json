@@ -1,0 +1,40 @@
+{
+  "title": "PromptSpec",
+  "type": "object",
+  "required": ["objective_id","context_files","instructions","constraints","deliverables","acceptance_criteria","file_targets"],
+  "properties": {
+    "objective_id": {
+      "type": "string",
+      "description": "ID of the objective this prompt belongs to."
+    },
+    "context_files": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Files in ai-context/ the GPT should reference for context."
+    },
+    "instructions": {
+      "type": "string",
+      "description": "Detailed instructions for GPT/Copilot to act on."
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Constraints to respect (style, scope, libraries, etc.)."
+    },
+    "deliverables": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What concrete things should be produced by Copilot (code, docs, configs)."
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Definition of done for this prompt’s output."
+    },
+    "file_targets": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Paths in the repo where generated outputs should live."
+    }
+  }
+}
