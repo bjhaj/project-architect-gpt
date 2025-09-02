@@ -1,0 +1,67 @@
+name: Validate Schemas
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Install ajv-cli for JSON schema validation
+      run: npm install -g ajv-cli
+    
+    - name: Validate JSON schemas are well-formed
+      run: |
+        for schema in ai-context/schema/*.json; do
+          echo "Validating schema: $schema"
+          ajv compile -s "$schema"
+        done
+    
+    - name: Check for example PromptSpecs (if any exist)
+      run: |
+        # This will validate any example PromptSpec files against the schema
+        # Add this when examples are added to the repository
+        if find . -name "*.promptspec.json" -type f | grep -q .; then
+          echo "Found PromptSpec files, validating against schema..."
+          for promptspec in $(find . -name "*.promptspec.json" -type f); do
+            echo "Validating: $promptspec"
+            ajv validate -s ai-context/schema/promptspec.schema.json -d "$promptspec"
+          done
+        else
+          echo "No PromptSpec files found to validate"
+        fi
+    
+    - name: Validate milestone files (if any exist)
+      run: |
+        if find . -name "milestones.json" -type f | grep -q .; then
+          echo "Found milestone files, validating against schema..."
+          for milestone in $(find . -name "milestones.json" -type f); do
+            echo "Validating: $milestone"
+            ajv validate -s ai-context/schema/milestone.schema.json -d "$milestone"
+          done
+        else
+          echo "No milestone JSON files found to validate"
+        fi
+    
+    - name: Validate objective files (if any exist)
+      run: |
+        if find . -name "objective_*.json" -type f | grep -q .; then
+          echo "Found objective files, validating against schema..."
+          for objective in $(find . -name "objective_*.json" -type f); do
+            echo "Validating: $objective"
+            ajv validate -s ai-context/schema/objective.schema.json -d "$objective"
+          done
+        else
+          echo "No objective JSON files found to validate"
+        fi

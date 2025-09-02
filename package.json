@@ -1,0 +1,36 @@
+{
+  "name": "project-architect-gpt",
+  "version": "0.1.0",
+  "description": "Turn fuzzy AI ideas into structured, reproducible work: Report → Milestones → Objectives → one-by-one Prompts",
+  "main": "README.md",
+  "scripts": {
+    "validate": "ajv compile -s ai-context/schema/*.json",
+    "validate-examples": "find examples -name '*.json' -exec ajv validate -s ai-context/schema/{} \\;",
+    "test": "npm run validate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bjhaj/project-architect-gpt.git"
+  },
+  "keywords": [
+    "ai",
+    "gpt",
+    "copilot",
+    "project-management",
+    "methodology",
+    "templates",
+    "structured-development"
+  ],
+  "author": "Project Architect GPT Contributors",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bjhaj/project-architect-gpt/issues"
+  },
+  "homepage": "https://github.com/bjhaj/project-architect-gpt#readme",
+  "devDependencies": {
+    "ajv-cli": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
